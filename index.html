@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="images/favicon.ico"  type="image/ico">
+		<link rel="stylesheet" href="style/index.css">
+		<link rel="stylesheet" href="style/tableexport.min.css">
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" integrity="sha384-gica7iLsHNiiC8YNU6FQkgZXB9CS8Yx2T7QzwYJK58LHQzMuDpyG/GYhQryiNS0e" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" integrity="sha384-Nlo8b0yiGl7Dn+BgLn4mxhIIBU6We7aeeiulNCjHdUv/eKHx59s3anfSUjExbDxn" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha384-Dziy8F2VlJQLMShA6FHWNul/veM9bCkRUaLqr199K94ntO5QUrLJBEbYegdSkkqX" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.2/main.js" integrity="sha256-HfAgbeBwKASvvj3HByvZYAygWD89DaYes+tVx0JKt3g=" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.2/main.css" integrity="sha256-ejA/z0dc7D+StbJL/0HAnRG/Xae3yS2gzg0OAnIURC4=" crossorigin="anonymous">
+		<script src="script/xlsx.core.min.js"></script>
+		<script src="script/FileSaver.min.js"></script>
+		<script src="script/tableexport.min.js"></script>
+        <script src="script/cookies.js"></script>
+        <script src="script/index.js"></script>
+		<title>Web Security Academy</title>
+	</head>
+	<body>
+		<!--This div will contain the overlay displayed when clicking on the hamburger menu on mobiles-->
+		<div class="laptop-disabled tablet-disabled">
+			<div id="hamburger-menu-overlay" onclick="hamburger_menu_overlay_off()">
+				<h3><a href="students.html">Students</a></h3>
+				<br>
+				<h3><a href="forum.html">Forum</a></h3>
+				<br>
+				<h3><a href="grades.html">Grades</a></h3>
+				<br>
+				<h3><a href="#aside">Latest News</a></h3>
+				<br>
+				<h3><a href="#aside">Next Events</a></h3>
+			</div>
+		</div>
+		<div id="calendar" title="Next Events Calendar"></div>
+		<!--This is the page header-->
+		<header class="row">
+			<img id="logo" class="col-3 col-s-3 phone-disabled" src="images/WebSecurityAcademy.png" alt="logo"/>
+			<div class="col-1 tablet-disabled phone-disabled"></div>
+			<img id="hamburger-icon" src="images/hamburger.png" class="fa fa-bars laptop-disabled tablet-disabled col-p-2" onclick="hamburger_menu_overlay_on()" alt="hamburger-menu-icon"/>
+			<h3 id="header-course-title" class="laptop-disabled col-s-7 col-p-8"><a href="index.html">Course: Web Security 101</a></h3>
+			<div id="menu1" class="col-6 tablet-disabled phone-disabled">
+				<input class="active col-3 HOME_ACTION" type="button" value="Home">
+				<input class="col-3 LABS_ACTION" type="button" value="Labs">
+				<input class="col-3 DISCOVER_ACTION" type="button" value="Discover">
+				<input class="col-3 LOGOUT_ACTION" type="button" value="Log Out">
+			</div>
+			<div id="user_info" class="col-2 col-s-2 col-p-2"></div>
+		</header>
+		<!--This is the main part of the website, it's modular (with containers) so that it's easy to design the entire page similarly and it looks cohesive and neat-->
+		<main class="row">
+			<nav id="menu2" class="col-3 col-s-3 phone-disabled">
+				<h3 class="tablet-disabled HOME_ACTION">Course: Web Security 101</h3>
+				<input class="col-12 col-s-12 FORUM_ACTION" type="button" value="Forum">
+				<input class="col-12 col-s-12 GRADES_ACTION" type="button" value="Grades">
+				<input class="col-12 col-s-12 laptop-disabled LATEST_NEWS_ACTION" type="button" value="Latest News">
+				<input class="col-12 col-s-12 laptop-disabled NEXT_EVENTS_ACTION" type="button" value="Next Events">
+			</nav>
+			<div id="wrapper"  class="col-6 col-s-9">
+				<div id="feed" class="col-12 col-s-12"></div>
+			</div>
+			<div class="laptop-disabled col-s-3 phone-disabled"></div>
+			<aside id="aside" class="col-3 col-s-9">
+				<div>
+					<h4>Latest News</h4>
+					<p>04/10 - Updated website design!</p>
+					<p>02/10 - New content added to Web Security 101 Course</p>
+					<p>29/09 - Lab 1 results available</p>
+					<br>
+					<h4 class="CALENDAR_ACTION">Next Events</h4>
+					<p>08/11 - Assignment due: CSRF Usecases</p>
+					<p>20/11 - Group Discussion: Public Disclosure: The do's and don'ts</p>
+				</div>
+			</aside>
+		</main>
+		<!--This is the footer-->
+		<footer class="row">
+			<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer">Copyright</a> | <a href="https://linkedin.com/in/ebenvenutto" target="_blank" rel="noreferrer">Author</a> | <a href="privacypolicy.html" target="_blank">Privacy Policy</a></p>
+		</footer>
+	</body>
+</html>

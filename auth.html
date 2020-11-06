@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="images/favicon.ico"  type="image/ico">
+        <link rel="stylesheet" href="style/auth.css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" integrity="sha384-gica7iLsHNiiC8YNU6FQkgZXB9CS8Yx2T7QzwYJK58LHQzMuDpyG/GYhQryiNS0e" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" integrity="sha384-Nlo8b0yiGl7Dn+BgLn4mxhIIBU6We7aeeiulNCjHdUv/eKHx59s3anfSUjExbDxn" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha384-Dziy8F2VlJQLMShA6FHWNul/veM9bCkRUaLqr199K94ntO5QUrLJBEbYegdSkkqX" crossorigin="anonymous"></script>
+        <script src="script/jquery.serializejson.js"></script>
+        <script src="script/cookies.js"></script>
+        <script src="script/auth.js"></script>
+        <title>Web Security Academy</title>
+	</head>
+	<body>
+        <!--This is the header-->
+        <header class="row"></header>
+        <!--This is the main container-->
+        <main class="row">
+            <div class="col-4 col-s-2 col-p-1"></div>
+            <div id="wrapper" class="col-4 col-s-8 col-p-10">
+                <div id="form_header"class="col-12 col-s-12">
+                    <div class="col-3 col-s-3 col-p-3 register_disappear"></div>
+                    <img class="col-6 col-s-6 col-p-6" src="images/WebSecurityAcademy.png" alt="logo"/>
+                    <div class="col-3 col-s-3 col-p-3 register_disappear"></div>
+                </div>
+                <div class="col-12 col-s-12">
+                    <h2 class="register_disappear">Sign In</h2>
+                    <h5 class="register_disappear">To continue to Web Security Academy</h5>
+                    <form id="login_form" class="col-12 col-s-12" accept-charset="UTF-8" autocomplete name="form">
+                        <input id="email_field" class="col-12 col-s-12" type="text" pattern="[a-zA-Z0-9]{1,}@[a-zA-Z0-9]{1,}\.[a-zA-Z0-9.]{1,}" title="Emails must follow the format name@domain.extension" name="email" placeholder="Email" required>
+                        <input id="password_field" class="col-12 col-s-12" type="password" pattern="[a-z0-9]{0,8}" title="Passwords must be maximum 8 characters long, with only lower case leters from a-z and digits from 0-9" name="password" placeholder="Password" required>
+                        <div class="col-1 col-s-1 phone-disabled"></div>
+                        <input id="register_button" class="col-4 col-s-4" type="button" value="Register">
+                        <div class="col-2 col-s-2 phone-disabled"></div>
+                        <input id="login_button" class="col-4 col-s-4" type="submit" value="Log In">
+                        <div class="col-1 col-s-1 phone-disabled"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-4 col-s-2 col-p-1"></div>
+        </main>
+		<!--This is the footer-->
+		<footer class="row">
+			<p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noreferrer">Copyright</a> | <a href="https://linkedin.com/in/ebenvenutto" target="_blank" rel="noreferrer">Author</a> | <a href="privacypolicy.html" target="_blank">Privacy Policy</a></p>
+		</footer>
+	</body>
+</html>
