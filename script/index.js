@@ -20,7 +20,7 @@ $(document).ready(function(){
     }
 
 
-    generateHome();
+   //generateHome();
       
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -110,15 +110,17 @@ function generateForum(){}
 
 function generateGrades(role){
   if(role == "Administrator" || role == "Teacher"){
-    $("#feed").html("<article><h3 id=\"table_title\">Web Security 101: Student Grades</h3><br><table id=\"grades_table\" class=\"col-12 col-s-12\"><caption><\/caption><thead><tr><th>Student<br><\/th><th>Activity 1<br><\/th><th>Activity 2<br><\/th><th>Activity 3<br><\/th><\/tr><\/thead><tbody><tr><td>Matteo Armend\u00E1riz S\u00E1nchez<br><\/td><td>8.5<\/td><td>9<br><\/td><td>10<br><\/td><\/tr><tr><td>Fiona D\u00EDaz Camacho<\/td><td>10<br><\/td><td>10<br><\/td><td>9.5<br><\/td><\/tr><tr><td>Cuy\u00E9n Hern\u00E1ndez Armas<br><\/td><td>2<br><\/td><td>3<br><\/td><td>0.5<br><\/td><\/tr><tr><td>Nuria Rocosa Bruquetas<br><\/td><td>6<br><\/td><td>7.2<br><\/td><td>5.9<br><\/td><\/tr><tr><td>Tomas Budo Cebeiro<br><\/td><td>8<br><\/td><td>6.9<br><\/td><td>10<br><\/td><\/tr><tr><td>Karla Koenig-Sacks<br><\/td><td>9<br><\/td><td>9<br><\/td><td>8.9<br><\/td><\/tr><tr><td>Fatima Armendariz Ablanque<br><\/td><td>8.7<br><\/td><td>6<br><\/td><td>5<br><\/td><\/tr><tr><td>Caly O. Ronald<br><\/td><td>5<br><\/td><td>4.5<br><\/td><td>5.3<br><\/td><\/tr><tr><td>Amadeo Hinojosas Chamoso<br><\/td><td>5<br><\/td><td>3.2<br><\/td><td>1.5<br><\/td><\/tr><tr><td>Diana Pineda Arag\u00F3n<br><\/td><td>7.2<br><\/td><td>7.5<br><\/td><td>8<br><\/td><\/tr><tr><td>Adri\u00E1n Palmier Atrari<br><\/td><td>10<br><\/td><td>9.5<br><\/td><td>9.6<br><\/td><\/tr><tr><td>Xavier Anelo Lagua<br><\/td><td>0<br><\/td><td>0<br><\/td><td>0<br><\/td><\/tr><tbody><\/table> <\/article>");
+    $("#feed").html("<article><h3 class=\"text_center\">Web Security 101: Student Grades</h3><br><table id=\"grades_table\" class=\"col-12 col-s-12\"><caption><\/caption><thead><tr><th>Student<br><\/th><th>Activity 1<br><\/th><th>Activity 2<br><\/th><th>Activity 3<br><\/th><\/tr><\/thead><tbody><tr><td>Matteo Armend\u00E1riz S\u00E1nchez<br><\/td><td>8.5<\/td><td>9<br><\/td><td>10<br><\/td><\/tr><tr><td>Fiona D\u00EDaz Camacho<\/td><td>10<br><\/td><td>10<br><\/td><td>9.5<br><\/td><\/tr><tr><td>Cuy\u00E9n Hern\u00E1ndez Armas<br><\/td><td>2<br><\/td><td>3<br><\/td><td>0.5<br><\/td><\/tr><tr><td>Nuria Rocosa Bruquetas<br><\/td><td>6<br><\/td><td>7.2<br><\/td><td>5.9<br><\/td><\/tr><tr><td>Tomas Budo Cebeiro<br><\/td><td>8<br><\/td><td>6.9<br><\/td><td>10<br><\/td><\/tr><tr><td>Karla Koenig-Sacks<br><\/td><td>9<br><\/td><td>9<br><\/td><td>8.9<br><\/td><\/tr><tr><td>Fatima Armendariz Ablanque<br><\/td><td>8.7<br><\/td><td>6<br><\/td><td>5<br><\/td><\/tr><tr><td>Caly O. Ronald<br><\/td><td>5<br><\/td><td>4.5<br><\/td><td>5.3<br><\/td><\/tr><tr><td>Amadeo Hinojosas Chamoso<br><\/td><td>5<br><\/td><td>3.2<br><\/td><td>1.5<br><\/td><\/tr><tr><td>Diana Pineda Arag\u00F3n<br><\/td><td>7.2<br><\/td><td>7.5<br><\/td><td>8<br><\/td><\/tr><tr><td>Adri\u00E1n Palmier Atrari<br><\/td><td>10<br><\/td><td>9.5<br><\/td><td>9.6<br><\/td><\/tr><tr><td>Xavier Anelo Lagua<br><\/td><td>0<br><\/td><td>0<br><\/td><td>0<br><\/td><\/tr><tbody><\/table> <\/article>");
     exportGenerator();
   } else if(role == "Student"){
-    $("#feed").html("<article><h3 id=\"table_title\">Web Security 101: Your grades<\/h3><table id=\"grades_table\" class=\"col-12 col-s-12\"><caption><\/caption><thead><tr><th>Assignment<\/th><th>Grade<\/th><\/tr><\/thead><tbody><tr><td>CSRF Testcases<br><\/td><td>8.5<br><\/td><\/tr><tr><td>Introduction to SQL Injection<br><\/td><td>8<\/td><\/tr><tr><td>Lab 1<\/td><td>10<\/td><\/tr><\/tbody><\/table> <\/article>");
+    $("#feed").html("<article><h3 class=\"text_center\">Web Security 101: Your grades<\/h3><br><table id=\"grades_table\" class=\"col-12 col-s-12\"><caption><\/caption><thead><tr><th>Assignment<\/th><th>Grade<\/th><\/tr><\/thead><tbody><tr><td>CSRF Testcases<br><\/td><td>8.5<br><\/td><\/tr><tr><td>Introduction to SQL Injection<br><\/td><td>8<\/td><\/tr><tr><td>Lab 1<\/td><td>10<\/td><\/tr><\/tbody><\/table> <\/article>");
     exportGenerator();
   }
 }
 
-function generateMyCourses(){}
+function generateMyCourses(){
+  //$("#feed").html()
+}
 
 function outofscope(){
 	alert("Warning: Tab out of scope");

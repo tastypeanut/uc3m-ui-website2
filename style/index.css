@@ -16,7 +16,7 @@
 	padding:0;
 	border:0;
 	box-sizing: border-box;
-	/*border: 1px solid black;*/
+	border: 1px solid black;
 }
 
 .text-center{
@@ -99,6 +99,10 @@ aside * {
 	padding-top: 0;
 }
 
+.text_center {
+	text-align: center;
+}
+
 
 
 
@@ -148,10 +152,6 @@ footer a{
 	margin-right: auto;
 	table-layout:fixed;
     width:100%;
-}
-
-#table_title {
-	text-align: center;
 }
 
 #grades_table thead{
@@ -208,14 +208,15 @@ hr{
 	background-color: #70e0d5ab; /*link color when it's marked as active*/
 }
 
-[id^="menu"] input:hover{
+[id^="menu"] input:hover, #menu2 h3:hover{
 	background-color: #555; /*Hover color, when mouse is on top of it*/
 	color: white;
 }
 
 #menu1 input {
 	border: 0.5px solid #111111d1;
-	padding: 2.5% 0;
+	font-size: medium;
+	/*padding: 2.5% 0;*/
 	cursor: pointer;
 }
 
@@ -226,8 +227,10 @@ hr{
 #menu2 h3{
 	text-align: center;
 	margin-bottom: 3%;
-	border: 2px solid;
+	padding: 2%;
+	border: 2px solid rgb(77, 77, 77);
 	cursor: pointer;
+	background-color: white;
 }
 
 #menu2 input {
