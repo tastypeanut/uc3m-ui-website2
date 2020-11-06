@@ -20,7 +20,7 @@ $(document).ready(function(){
     }
 
 
-   //generateHome();
+    generateHome();
       
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
