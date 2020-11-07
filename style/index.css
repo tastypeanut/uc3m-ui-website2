@@ -19,7 +19,7 @@
 	/*border: 1px solid black;*/
 }
 
-.text-center{
+.text_center{
 	text-align: center;
 }
 
@@ -126,21 +126,16 @@ footer a{
 	width: 7%;
 }
 
-
-
-
-/*FORUM STYLING*/
-
-.forum-theme{
-	border: 2px solid;
+/*MY COURSES STYLING*/
+#my_courses{
+	list-style: circle inside;
+	padding: 2% 5%;
+	text-overflow: hidden;
 }
 
-.forum-title{
-	display:inline;
+#my_courses li{
+	padding: 2%;
 }
-
-
-
 
 /*GRADES STYLING*/
 
@@ -193,6 +188,55 @@ hr{
 .feedstack div{
 	display: inline-block;
 }
+
+
+/*FORUM STYLING*/
+
+.forum-theme{
+	border: 2px solid;
+}
+
+.forum-title{
+	display:inline;
+}
+
+.expandable{
+	display: none;
+}
+
+.message{
+	display: inline-block;
+	text-align: justify;
+}
+.message p{
+	margin-right: 4%;
+}
+
+.post_message_forum{
+	display: inline-block;
+	text-align: justify;
+}
+
+.forum_post_form textarea {
+	resize: none;
+}
+
+.forum_post_form input{
+	font-size: medium;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	background-color: #797979;
+}
+
+.forum_post_form textarea{
+	padding: 2%;
+}
+
+.forum_post_form input:hover{
+	background-color: #f8f8f8;
+    transition-duration: 0.3s;
+}
+
 
 
 

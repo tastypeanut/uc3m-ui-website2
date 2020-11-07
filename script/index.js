@@ -6,6 +6,7 @@ var cookie_in_use = localStorage.getItem('cookie_in_use');
 if (cookie_in_use == null || getCookie(cookie_in_use) == null) {
     window.location.href = "auth.html";
 }
+var logout = false;
 
 $(document).ready(function(){
 
@@ -19,8 +20,16 @@ $(document).ready(function(){
       $("#menu2 h3").after(atob("PGlucHV0IGNsYXNzPSJjb2wtMTIgY29sLXMtMTIgTVlfQ09VUlNFU19BQ1RJT04iIHR5cGU9ImJ1dHRvbiIgdmFsdWU9Ik15IENvdXJzZXMiPg=="));
     }
 
-
+      
     generateHome();
+
+    window.onbeforeunload = function(event)
+    { 
+      if (logout == false){
+        return confirm("Confirm refresh");
+      } else return;
+    };
+
       
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -43,9 +52,6 @@ $(document).ready(function(){
          }
       ]
     });
-  
-
-    
 
     $(".HOME_ACTION").click(function(){
       generateHome();
@@ -53,6 +59,14 @@ $(document).ready(function(){
 
     $(".STUDENTS_ACTION").click(function(){
       generateStudents();
+    });
+
+    $(".MY_COURSES_ACTION").click(function(){
+      generateMyCourses();
+    });
+
+    $(".FORUM_ACTION").click(function(){
+      generateForum(cookie_decoded_parsed);
     });
 
     $(".GRADES_ACTION").click(function(){
@@ -78,6 +92,7 @@ $(document).ready(function(){
     $(".LOGOUT_ACTION").click(function(){
       if (confirm("Are you sure you want to log out?")) {
         localStorage.removeItem('cookie_in_use'); 
+        logout = true;
         window.location.href = "auth.html";
       }
     });
@@ -98,7 +113,7 @@ function generateHome(){
 function generateStudents(){
   var students = ["Matteo Armendáriz Sánchez", "Fiona Díaz Camacho", "Cuyén Hernández Armas", "Nuria Rocosa Bruquetas", "Tomas Budo Cebeiro", "Karla Koenig-Sacks", "Fatima Armendariz Ablanque", "Caly O. Ronald", "Amadeo Hinojosas Chamoso", "Diana Pineda Aragón", "Adrián Palmier Atrari", "Xavier Anelo Lagua"];
   var emails = ["masanchez@outlook.com", "foleyed@rhyta.com", "macy1976@gmail.com", "ccbruquetas2@yopmail.com", "tomasito1@yahoo.com", "hmsarvott12@gmail.com", "fatimaa@gmail.com", "jocaly14@yopmail.com", "ekchamoso10@gmail.com", "fomujal14@yahoo.com", "corazonpalmito@hotmail.com", "xlagua@inf.uc3m.es"];
-  var write_buffer = "<h2 class=\"text-center\">Students:</h2><br><article>";
+  var write_buffer = "<h2 class=\"text_center\">Students:</h2><br><article>";
   var counter;
   for (counter = 0; counter < students.length; counter++){
     write_buffer += "<div class=\"feedstack\"><img class=\"icon col-3 col-s-3\" src=\"images/student"+ (counter + 1) + ".jpeg\" alt=\"student-photo\"><div class=\"col-9 col-s-9\"><h3>" + students[counter] + "</h3><p>" + emails[counter] + "</p><br><p>Send Message:</p><a href=\"mailto:" + emails[counter] + "\"><img class=\"email-icon\" src=\"images/email.png\" alt=\"email-icon\"/></a></div></div>"
@@ -106,28 +121,41 @@ function generateStudents(){
   $("#feed").html(write_buffer);
 }
 
-function generateForum(){}
+function generateForum(cookie_decoded_parsed){
+  $("#feed").html("<h2 class=\"text_center\">Forum Themes:<\/h2> <br> <article class=\"forum-theme\"><div class=\"feedstack\"> <img class=\"icon col-2 col-s-2 phone-disabled\" src=\"images\/forum.png\" alt=\"forum-post\"><div class=\"col-10 col-s-10\"><h3 class=\"forum-title\">Study Group<\/h3> - 2 Messages<p>Last Update: 5\/10\/2020 10:31 AM<\/p><\/div><\/div><div class=\"expandable\"><div class=\"messages\"><hr><div class=\"message\"> <img class=\"icon col-2 col-s-2\" src=\"images\/student1.jpeg\" alt=\"student-photo\"><div class=\"col-10 col-s-10\"><h3>Matteo Armend\u00E1riz S\u00E1nchez<\/h3><p>Published: 4\/10\/2020 11:24<\/p><p>Hi everyone! I\'m looking for a team mate for the study group. If anyone is available, please HMU!<\/p><\/div><\/div><div class=\"message\"> <img class=\"icon col-2 col-s-2\" src=\"images\/student6.jpeg\" alt=\"student-photo\"><div class=\"col-10 col-s-10\"><h3>Karla Koenig-Sacks<\/h3><p>Published: 5\/10\/2020 10:31<\/p><p>Hey Matteo! I\'m available! You can contact me at hmsarvott12@gmail.com<\/p><\/div><\/div><\/div><div class=\"post_message_forum\"><hr> <br><h4 class=\"text_center\">Post a message to this thread:<\/h4><br><form class=\"forum_post_form\" accept-charset=\"UTF-8\" name=\"form\"><textarea required class=\"col-12 col-s-12 forum_post_form_textarea\" name=\"comment\" placeholder=\"Add your comment here...\" rows=\"5\" cols=\"100\"><\/textarea><div class=\"col-3 col-s-3\"><\/div> <input class=\"col-6 col-s-6\" type=\"submit\" value=\"Submit\"><div class=\"col-3 col-s-3\"><\/div><\/form><\/div><\/div> <\/article> <br> <article class=\"forum-theme\"><div class=\"feedstack\"> <img class=\"icon col-2 col-s-2 phone-disabled\" src=\"images\/forum.png\" alt=\"forum-post\"><div class=\"col-10 col-s-10\"><h3 class=\"forum-title\">Second Term Exam: FAQ<\/h3> - 1 Message<p>Last Update: 7\/11\/2020 22:34<\/p><\/div><\/div><div class=\"expandable\"><div class=\"messages\"><hr><div class=\"message\"> <img class=\"icon col-2 col-s-2\" src=\"images\/student9.jpeg\" alt=\"student-photo\"><div class=\"col-10 col-s-10\"><h3>Amadeo Hinojosas Chamoso<\/h3><p>Published: 7\/11\/2020 22:34<\/p><p>Hi teacher,<\/p><p>I have a question about the exam. Are the quiz questions skippable? Can we go back to check our answers?<\/p><p>Regards,<\/p><p>Amadeo<\/p><\/div><\/div><\/div><div class=\"post_message_forum\"><hr> <br><h4 class=\"text_center\">Post a message to this thread:<\/h4><br><form class=\"forum_post_form\" accept-charset=\"UTF-8\" name=\"form\"><textarea required class=\"col-12 col-s-12 forum_post_form_textarea\" name=\"comment\" placeholder=\"Add your comment here...\" rows=\"5\" cols=\"100\"><\/textarea><div class=\"col-3 col-s-3\"><\/div> <input class=\"col-6 col-s-6\" type=\"submit\" value=\"Submit\"><div class=\"col-3 col-s-3\"><\/div><\/form><\/div><\/div> <\/article> <br> <article class=\"forum-theme\"><div class=\"feedstack\"> <img class=\"icon col-2 col-s-2 phone-disabled\" src=\"images\/forum.png\" alt=\"forum-post\"><div class=\"col-10 col-s-10\"><h3 class=\"forum-title\">Lab 1 Doubts<\/h3> - 3 Messages<p>Last Update: 29\/10\/2020 15:47<\/p><\/div><\/div><div class=\"expandable\"><div class=\"messages\"><hr><div class=\"message\"> <img class=\"icon col-2 col-s-2\" src=\"images\/student12.jpeg\" alt=\"student-photo\"><div class=\"col-10 col-s-10\"><h3>Xavier Anelo Lagua<\/h3><p>Published: 27\/10\/2020 23:55<\/p><p>Hey guys, do you know how to solve exercise 2 of the lab 1?<\/p><p>Cheers.<\/p><\/div><\/div><div class=\"message\"> <img class=\"icon col-2 col-s-2\" src=\"images\/student10.jpeg\" alt=\"student-photo\"><div class=\"col-10 col-s-10\"><h3>Diana Pineda Arag\u00F3n<\/h3><p>Published: 28\/10\/2020 10:31<\/p><p>Hey dude, why don\'t you ask me before going and posting on the forum? I AM your team mate you know? You could count on me a bit more... :\/<\/p><\/div><\/div><div class=\"message\"> <img class=\"icon col-2 col-s-2\" src=\"images\/student11.jpeg\" alt=\"student-photo\"><div class=\"col-10 col-s-10\"><h3>Adri\u00E1n Palmier Atrari<\/h3><p>Published: 29\/10\/2020 15:47<\/p><p>Lol guys, don\'t fight on the forum, this isn\'t the place to do so.<\/p><\/div><\/div><\/div><div class=\"post_message_forum\"><hr> <br><h4 class=\"text_center\">Post a message to this thread:<\/h4><br><form class=\"forum_post_form\" accept-charset=\"UTF-8\" name=\"form\"><textarea required class=\"col-12 col-s-12 forum_post_form_textarea\" name=\"comment\" placeholder=\"Add your comment here...\" rows=\"5\" cols=\"100\"><\/textarea><div class=\"col-3 col-s-3\"><\/div> <input class=\"col-6 col-s-6\" type=\"submit\" value=\"Submit\"><div class=\"col-3 col-s-3\"><\/div><\/form><\/div><\/div> <\/article> <br> <article class=\"forum-theme\"><div class=\"feedstack\"> <img class=\"icon col-2 col-s-2 phone-disabled\" src=\"images\/forum.png\" alt=\"forum-post\"><div class=\"col-10 col-s-10\"><h3 class=\"forum-title\">Online Sessions<\/h3> - 48 Messages<p>Last Update: 30\/10\/2020 17:02<\/p><\/div><\/div><div class=\"expandable\"><div class=\"messages\"><hr><div class=\"message\"> <img class=\"icon col-2 col-s-2\" src=\"images\/student5.jpeg\" alt=\"student-photo\"><div class=\"col-10 col-s-10\"><h3>Tomas Budo Cebeiro<\/h3><p>Published: 30\/10\/2020 17:02<\/p><p>Dear Teacher, is there class on friday? I don\'t see it in the calendar, and no one here knows. Regards.<\/p><\/div><\/div><\/div><div class=\"post_message_forum\"><hr> <br><h4 class=\"text_center\">Post a message to this thread:<\/h4><br><form class=\"forum_post_form\" accept-charset=\"UTF-8\" name=\"form\"><textarea required class=\"col-12 col-s-12 forum_post_form_textarea\" name=\"comment\" placeholder=\"Add your comment here...\" rows=\"5\" cols=\"100\"><\/textarea><div class=\"col-3 col-s-3\"><\/div> <input class=\"col-6 col-s-6\" type=\"submit\" value=\"Submit\"><div class=\"col-3 col-s-3\"><\/div><\/form><\/div><\/div> <\/article> <br>");
+  $(".forum-theme").click(function(){
+    $(this).find(".expandable").slideDown(100);
+  });
+  $(".forum_post_form").submit(function(){
+    event.preventDefault();
+    let currentDate = new Date();
+    var name = cookie_decoded_parsed['full_name'];
+    var profile_image = "<img class=\"icon col-2 col-s-2 profile_photo_forum\" src=\"" + "images/ProfilePhotos/" + cookie_in_use + ".jpeg\" alt=\"Profile Photo\" onerror=\"$(this).attr(&quot;src&quot;, &quot;images/ProfilePhotos/default.jpeg&quot;);\">"
+    var content = $(this).find(".forum_post_form_textarea").val();
+    $(".forum_post_form").trigger("reset");
+    $(this).parent().parent().find(".messages").append("<div class=\"message\">" + profile_image + "<div class=\"col-10 col-s-10\"><h3>" + name + "</h3><p>Published: " + currentDate.getDate() + "/" + (currentDate.getMonth() + 1) + "/" + currentDate.getFullYear() + " " + currentDate.getHours() + ":" + currentDate.getMinutes() + "</p><p>" + content + "</p></div></div>")});
+  }
 
 function generateGrades(role){
   if(role == "Administrator" || role == "Teacher"){
     $("#feed").html("<article><h3 class=\"text_center\">Web Security 101: Student Grades</h3><br><table id=\"grades_table\" class=\"col-12 col-s-12\"><caption><\/caption><thead><tr><th>Student<br><\/th><th>Activity 1<br><\/th><th>Activity 2<br><\/th><th>Activity 3<br><\/th><\/tr><\/thead><tbody><tr><td>Matteo Armend\u00E1riz S\u00E1nchez<br><\/td><td>8.5<\/td><td>9<br><\/td><td>10<br><\/td><\/tr><tr><td>Fiona D\u00EDaz Camacho<\/td><td>10<br><\/td><td>10<br><\/td><td>9.5<br><\/td><\/tr><tr><td>Cuy\u00E9n Hern\u00E1ndez Armas<br><\/td><td>2<br><\/td><td>3<br><\/td><td>0.5<br><\/td><\/tr><tr><td>Nuria Rocosa Bruquetas<br><\/td><td>6<br><\/td><td>7.2<br><\/td><td>5.9<br><\/td><\/tr><tr><td>Tomas Budo Cebeiro<br><\/td><td>8<br><\/td><td>6.9<br><\/td><td>10<br><\/td><\/tr><tr><td>Karla Koenig-Sacks<br><\/td><td>9<br><\/td><td>9<br><\/td><td>8.9<br><\/td><\/tr><tr><td>Fatima Armendariz Ablanque<br><\/td><td>8.7<br><\/td><td>6<br><\/td><td>5<br><\/td><\/tr><tr><td>Caly O. Ronald<br><\/td><td>5<br><\/td><td>4.5<br><\/td><td>5.3<br><\/td><\/tr><tr><td>Amadeo Hinojosas Chamoso<br><\/td><td>5<br><\/td><td>3.2<br><\/td><td>1.5<br><\/td><\/tr><tr><td>Diana Pineda Arag\u00F3n<br><\/td><td>7.2<br><\/td><td>7.5<br><\/td><td>8<br><\/td><\/tr><tr><td>Adri\u00E1n Palmier Atrari<br><\/td><td>10<br><\/td><td>9.5<br><\/td><td>9.6<br><\/td><\/tr><tr><td>Xavier Anelo Lagua<br><\/td><td>0<br><\/td><td>0<br><\/td><td>0<br><\/td><\/tr><tbody><\/table> <\/article>");
-    exportGenerator();
+    exportGenerator("grades_table");
   } else if(role == "Student"){
     $("#feed").html("<article><h3 class=\"text_center\">Web Security 101: Your grades<\/h3><br><table id=\"grades_table\" class=\"col-12 col-s-12\"><caption><\/caption><thead><tr><th>Assignment<\/th><th>Grade<\/th><\/tr><\/thead><tbody><tr><td>CSRF Testcases<br><\/td><td>8.5<br><\/td><\/tr><tr><td>Introduction to SQL Injection<br><\/td><td>8<\/td><\/tr><tr><td>Lab 1<\/td><td>10<\/td><\/tr><\/tbody><\/table> <\/article>");
-    exportGenerator();
+    exportGenerator("grades_table");
   }
 }
 
 function generateMyCourses(){
-  //$("#feed").html()
+  $("#feed").html(atob("PGgzIGNsYXNzPSJ0ZXh0X2NlbnRlciI+TXkgQ291cnNlczwvaDM+PHVsIGlkPSJteV9jb3Vyc2VzIj48bGk+V2ViIFNlY3VyaXR5IDEwMTwvbGk+PGxpPkludHJvZHVjdGlvbiB0byBET00tYmFzZWQgWFNTPC9saT48bGk+RE9NUHVyaWZ5LCBlc2NhcGUgYXJ0aXN0PzwvbGk+PGxpPlRoZSBBbmd1bGFyIFNhbmRib3ggYW5kIGhvdyB0byBieXBhc3MgaXQ8L2xpPjwvdWw+"));
 }
 
 function outofscope(){
 	alert("Warning: Tab out of scope");
 }
 
-function exportGenerator(){
-  TableExport(document.getElementsByTagName("table"), {
+function exportGenerator(table_id){
+  TableExport(document.getElementById(table_id), {
     headers: true,                      // (Boolean), display table headers (th or td elements) in the <thead>, (default: true)
     footers: true,                      // (Boolean), display table footers (th or td elements) in the <tfoot>, (default: false)
     formats: ["xlsx", "csv", "txt"],    // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
