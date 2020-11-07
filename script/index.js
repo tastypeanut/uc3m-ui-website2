@@ -20,7 +20,6 @@ $(document).ready(function(){
       $("#menu2 h3").after(atob("PGlucHV0IGNsYXNzPSJjb2wtMTIgY29sLXMtMTIgTVlfQ09VUlNFU19BQ1RJT04iIHR5cGU9ImJ1dHRvbiIgdmFsdWU9Ik15IENvdXJzZXMiPg=="));
     }
 
-      
     generateHome();
 
     window.onbeforeunload = function(event)

@@ -401,7 +401,7 @@ It gives us a very granular control of what is displayed.
 		padding: 15vh 0;
 	}
 
-	#hamburger-menu-overlay a{
+	#hamburger-menu-overlay h3{
 		color: white;
 		text-decoration: none;
 	}
