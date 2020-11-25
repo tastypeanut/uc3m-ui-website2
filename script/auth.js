@@ -82,7 +82,7 @@ $(document).ready(function(){
 
 
 /*
-When the user logs in, or registers, we use a JQUERY library called jquery.serializejson.js to
+When the user logs in, or registers, we use a JQUERY plugin called jquery.serializejson.js to
 grab the form data, convert it into a JSON object, and then, depending on the usecase, use it to
 compare it to stored cookie values [Loging In], like when we log in, or stringify it, encode it in base64, and 
 set it as the value of our user cookie [Registering].
