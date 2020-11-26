@@ -22,7 +22,7 @@ Go to `http://localhost:8080` & you should see the website!
 ## 💡 Additional Info
 
 ### Form input conversion to JSON
-As said previously, all user information is stored in cookies. To be able to confortably store, retrieve, and manipulate this information, the page stores it in the user's respective cookie as a Base64 encoded JSON object. HTML forms don't do this by default, so with jQuery we call a function that will do it for us:
+As said previously, all user information is stored in cookies. To be able to comfortably store, retrieve, and manipulate this information, the page stores it in the user's respective cookie as a Base64 encoded JSON object. HTML forms don't do this by default, so with jQuery we call a function that will do it for us:
 
  ```javascript
 $("#register_form").submit(function(){
@@ -30,7 +30,7 @@ $("#register_form").submit(function(){
 });
  ```
  
-`form_register()` disables the form's default action, and uses the [jQuery.serializeJSON()](https://github.com/marioizquierdo/jquery.serializeJSON) plugin to convert the input to a JSON object that we later stringify and encode with Base64. It also check that the email is not already registered before creating the cookie and setting what cookie is in use.
+`form_register()` disables the form's default action, and uses the [jQuery.serializeJSON()](https://github.com/marioizquierdo/jquery.serializeJSON) plugin to convert the input to a JSON object that we later stringify and encode with Base64. It also checks that the email is not already registered before creating the cookie and setting what cookie is in use.
 
 ```javascript
 function form_register(){
