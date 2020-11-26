@@ -54,3 +54,6 @@ function form_register(){
 * [FileSaver](https://github.com/clarketm/FileSaver.js)
 * [sheetjs](https://github.com/SheetJS/sheetjs)
 * [fullcalendar](https://github.com/fullcalendar/fullcalendar)
+
+## 📄 License: **[GPLv3](https://github.com/tastypeanut/uc3m-ui-website2/blob/main/LICENSE.txt)**
+License does not include jQuery or any jQuery plugins used. They have their own licenses.
